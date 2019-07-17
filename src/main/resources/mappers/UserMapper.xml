@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace表示命名空间 ，值必须为接口的名称（包括包名）-->
+<!-- 实现类没有，mybatis框架会生成接口的实现类 -->
+<mapper namespace="com.indusfo.springboootdemo_user.mapper.userMapper">
+    <resultMap id="userResult" type="com.indusfo.springboootdemo_user.pojo.User">
+        <result column="L_USER_ID" property="lUserId"/>
+        <result column="VC_USER_NAME" property="vcUserName"/>
+        <result column="VC_USER_PWD" property="vcUserPwd"/>
+        <result column="VC_USER_CODE" property="vcUserCode"/>
+
+        <result column="L_DATA_STATE" property="lDataState"/>
+    </resultMap>
+    <!-- 通过角色id查询用户 -->
+    <select id="selectUser" parameterType="com.indusfo.springboootdemo_user.pojo.User"
+            resultMap="userResult">
+        SELECT
+        L_USER_ID,VC_USER_NAME,L_DATA_STATE,VC_USER_PWD
+        FROM
+        T_B01_USER
+        WHERE
+        L_DATA_STATE != 2
+        <if test="lUserId!=null">
+            AND L_USER_ID = #{lUserId}
+        </if>
+        AND L_USER_ID != 1
+        ORDER BY L_USER_ID
+    </select>
+
+    <!-- 通过角色id查询用户 -->
+    <select id="loginUser" parameterType="com.indusfo.springboootdemo_user.pojo.User"
+            resultType="Integer">
+        SELECT
+        count (1)
+        FROM
+        T_B01_USER
+        WHERE
+        L_DATA_STATE != 2
+
+            AND VC_USER_NAME = #{UserName} AND VC_USER_PWD =#{passWord}
+
+
+    </select>
+
+    <select id="selectByName" resultMap="userResult">
+        SELECT
+         L_USER_ID ,
+        VC_USER_CODE,
+        VC_USER_NAME,
+        L_DATA_STATE,
+        VC_USER_PWD
+        FROM T_B01_USER
+        WHERE VC_USER_CODE = #{userName}
+    </select>
+
+
+</mapper>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
