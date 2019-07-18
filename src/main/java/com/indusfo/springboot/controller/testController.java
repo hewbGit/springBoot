@@ -42,7 +42,7 @@ public class testController {
         User user = new User();
         user.setVcUserName(username);
         user.setVcUserPwd(nickname);
-        //      redisTemplate.opsForValue().set(username, user,100000);
+        redisTemplate.opsForValue().set(username, user,100000);
         redisUtil.set(username, user, 100);
         return ResponseData.success("ok");
     }
