@@ -1,0 +1,74 @@
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .gitignore	(date 1554860944276)
++++ .gitignore	(date 1554860944276)
+@@ -0,0 +1,29 @@
++HELP.md
++/target/
++!.mvn/wrapper/maven-wrapper.jar
++
++### STS ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
++
++### IntelliJ IDEA ###
++.idea
++*.iws
++*.iml
++*.ipr
++
++### NetBeans ###
++/nbproject/private/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
++/build/
++
++### VS Code ###
++.vscode/
+Index: src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/resources/application.yml	(date 1556094516328)
++++ src/main/resources/application.yml	(date 1556094516328)
+@@ -0,0 +1,28 @@
++# 配置端口
++server:
++  port: 8084
++# 配置数据源
++spring:
++  datasource:
++    url: jdbc:sqlserver://localhost:1433;DatabaseName=IEIS_SPC
++    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
++    username: sa
++    password: sqlserver
++
++
++  redis:
++    host: localhost
++    port: 6379
++    #客户端超时时间单位是毫秒 默认是2000
++    timeout: 1000
++
++#      pool:
++#        max-active: 20
++#        max-idle: 8
++#        min-idle: 2
++#        max-wait: 100
++
++
++
++mybatis:
++  mapper-locations: classpath:mappers/*.xml
+\ No newline at end of file
